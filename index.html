@@ -3,243 +3,747 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harshad Rajanikant Nimse | Portfolio</title>
+  <meta name="description" content="Harshad Nimse — Full Stack Developer & Data Engineer. Skilled in Java, Spring Boot, Python, Node.js, SQL, ETL pipelines, and n8n automation. Open to full-time opportunities." />
+  <meta name="keywords" content="Harshad Nimse, Full Stack Developer, Data Engineer, Java, Python, Node.js, Portfolio" />
+  <meta name="author" content="Harshad Nimse" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Harshad Nimse | Full Stack Developer & Data Engineer" />
+  <meta property="og:description" content="Portfolio of Harshad Nimse — Building scalable backend systems, data pipelines, and interactive web applications." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://harshadnimse.github.io/Portfolio/" />
+
+  <title>Harshad Nimse | Full Stack Developer & Data Engineer</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Devicon for technology icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
+
+  <!-- ========== PRELOADER ========== -->
+  <div id="preloader">
+    <div class="preloader-logo">H<span>.</span></div>
+    <div class="preloader-bar"><div class="preloader-fill"></div></div>
+  </div>
+
+  <!-- ========== CUSTOM CURSOR (Desktop only) ========== -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ========== SCROLL PROGRESS ========== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ========== HEADER / NAV ========== -->
+  <header class="site-header" id="siteHeader">
     <nav class="navbar">
       <a href="#home" class="logo">Harshad<span>.</span></a>
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Internship</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
-      </ul>
+
+      <div class="nav-right">
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707-.707M6.343 6.364l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+          </svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
 
   <main>
+    <!-- ========== HERO SECTION ========== -->
     <section id="home" class="hero section">
+      <canvas id="particleCanvas"></canvas>
+
       <div class="hero-content">
-        <p class="eyebrow">MCA Student • Full Stack Developer</p>
-        <h1>Hi, I'm <span>Harshad Rajanikant Nimse</span></h1>
-        <p class="hero-text">
-          I build practical, secure, and user-friendly web applications using modern
-          frontend and backend technologies.
-        </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn primary">View Projects</a>
-          <a href="#contact" class="btn secondary">Contact Me</a>
+        <div class="availability-badge">
+          <span class="pulse-dot"></span>
+          Open to Full-time Opportunities
         </div>
-        <div class="quick-info">
-          <div>
-            <strong>Location</strong>
-            <p>Pune, Maharashtra</p>
+
+        <p class="eyebrow">Full Stack Developer • Data Engineer</p>
+
+        <h1>Hi, I'm <span class="gradient-text">Harshad Nimse</span></h1>
+
+        <p class="typing-line">
+          I build <span id="typingText"></span><span class="typing-cursor">|</span>
+        </p>
+
+        <p class="hero-text">
+          I design scalable backend architectures, engineer data pipelines, and build interactive web applications.
+          Skilled in Java, Python, Node.js, and SQL with a strong focus on clean code, structured data flows, and real-world problem solving.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            View My Work
+          </a>
+          <a href="#contact" class="btn secondary">Get In Touch</a>
+          <div class="resume-dropdown">
+            <button class="btn outline resume-trigger">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Resume
+              <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="resume-menu">
+              <a href="Harshad_Resume_J.pdf" download>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Full Stack Resume
+              </a>
+              <a href="Harshad_Resume_DataScience.pdf" download>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Data Engineering Resume
+              </a>
+            </div>
           </div>
-          <div>
-            <strong>Focus</strong>
-            <p>Full Stack Development</p>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-value"><span class="stat-number" data-target="4">0</span><span class="stat-plus">+</span></div>
+            <p>Projects Built</p>
           </div>
-          <div>
-            <strong>Status</strong>
-            <p>Open to Internship / Entry Roles</p>
+          <div class="stat-item">
+            <div class="stat-value"><span class="stat-number" data-target="7">0</span><span class="stat-plus">+</span></div>
+            <p>Certifications</p>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value"><span class="stat-number" data-target="3">0</span></div>
+            <p>Months Internship</p>
           </div>
         </div>
       </div>
-      <div class="hero-card">
-        <div class="profile-ring">
-          <div class="profile-avatar">HN</div>
-        </div>
-        <h2>Developer Portfolio</h2>
-        <p>HTML • CSS • JavaScript • Node.js • Express.js • MySQL</p>
-        <div class="code-box">
-          <code>const goal = "Build useful digital solutions";</code>
+
+      <div class="hero-visual">
+        <div class="profile-card" id="profileCard">
+          <div class="profile-image-ring">
+            <img src="profile.jpg" alt="Harshad Nimse" class="profile-image" id="profileImg" />
+            <div class="profile-fallback" id="profileFallback">HN</div>
+          </div>
+          <h2>Harshad Nimse</h2>
+          <p class="profile-subtitle">Full Stack Developer & Data Engineer</p>
+          <div class="profile-tags">
+            <span>Java</span>
+            <span>Python</span>
+            <span>Node.js</span>
+            <span>SQL</span>
+            <span>ETL</span>
+          </div>
+          <div class="profile-code-block">
+            <div class="code-dots">
+              <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            </div>
+            <code><span class="code-kw">const</span> focus = [<span class="code-str">"Backend"</span>, <span class="code-str">"Data Eng"</span>, <span class="code-str">"Automation"</span>];</code>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section">
+    <!-- ========== SECTION DIVIDER ========== -->
+    <div class="section-divider"></div>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about" class="section reveal">
       <div class="section-heading">
-        <p>About</p>
+        <p class="section-label">About</p>
         <h2>Who I Am</h2>
       </div>
       <div class="about-grid">
-        <div class="glass-card">
+        <div class="glass-card bio-card">
           <p>
-            Passionate coder interested in building practical web applications and solving
-            real-world problems through technology. Always learning new tools, improving
-            my skills, and turning ideas into useful digital solutions.
+            I am a final-year Master of Computer Applications (MCA) student with hands-on experience (freeCodeCamp certified, ~300 hrs) in Python, SQL data modelling, and AI automation pipeline development.
+          </p>
+          <p>
+            I've built n8n orchestrator-worker workflows with ETL architecture, Google Sheets data stores, and multi-API integrations. Certified in AI for Management (NPTEL Elite, IIT Madras, 72%) and Data Analytics (Deloitte/Forage). Comfortable designing end-to-end data flows from ingestion through transformation to structured output.
           </p>
         </div>
-        <div class="glass-card">
-          <h3>What I Do</h3>
+        <div class="glass-card details-card">
+          <h3>My Workflow Focus</h3>
           <ul class="check-list">
-            <li>Build responsive frontend interfaces</li>
-            <li>Create Node.js and Express.js APIs</li>
-            <li>Design MySQL database schemas</li>
-            <li>Implement authentication and role-based access</li>
-            <li>Prepare academic project documentation</li>
+            <li>Structuring maintainable REST APIs with JWT & role-based security.</li>
+            <li>Writing optimized SQL queries, handling normalization, and profiling indexes.</li>
+            <li>Orchestrating event-driven data pipelines (ETL) and system integrations via n8n.</li>
+            <li>Building reliable backend systems with Java Spring Boot and Node.js.</li>
+            <li>Designing user-first responsive web apps with React.js and vanilla CSS.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="section">
+    <div class="section-divider"></div>
+
+    <!-- ========== SKILLS SECTION ========== -->
+    <section id="skills" class="section reveal">
       <div class="section-heading">
-        <p>Skills</p>
-        <h2>Technologies I Work With</h2>
+        <p class="section-label">Skills</p>
+        <h2>Core Expertise</h2>
       </div>
-      <div class="skills-grid">
-        <span>HTML5</span>
-        <span>CSS3</span>
-        <span>JavaScript</span>
-        <span>Node.js</span>
-        <span>Express.js</span>
-        <span>MySQL</span>
-        <span>Python</span>
-        <span>Java</span>
-        <span>PHP</span>
-        <span>Git & GitHub</span>
-        <span>Postman</span>
-        <span>VS Code</span>
+
+      <!-- Skill Category Tabs -->
+      <div class="skills-tabs">
+        <button class="skill-tab active" data-tab="backend">Backend & Languages</button>
+        <button class="skill-tab" data-tab="data">Data Engineering</button>
+        <button class="skill-tab" data-tab="frontend">Frontend</button>
+        <button class="skill-tab" data-tab="tools">Tools & DevOps</button>
+      </div>
+
+      <div class="skills-panels">
+        <!-- Backend & Languages -->
+        <div class="skill-panel active" id="panel-backend">
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="devicon-java-plain skill-icon"></i>
+              <span>Java</span>
+              <small>Primary</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-spring-plain skill-icon"></i>
+              <span>Spring Boot</span>
+              <small>Framework</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-python-plain skill-icon"></i>
+              <span>Python</span>
+              <small>Scripting & Data</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-javascript-plain skill-icon"></i>
+              <span>JavaScript</span>
+              <small>ES6+</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-nodejs-plain skill-icon"></i>
+              <span>Node.js</span>
+              <small>Runtime</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-express-original skill-icon"></i>
+              <span>Express.js</span>
+              <small>API Framework</small>
+            </div>
+            <div class="skill-card">
+              <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+              <span>REST APIs</span>
+              <small>Design & Security</small>
+            </div>
+            <div class="skill-card">
+              <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+              <span>JWT Auth</span>
+              <small>Authentication</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Engineering -->
+        <div class="skill-panel" id="panel-data">
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="devicon-mysql-plain skill-icon"></i>
+              <span>MySQL</span>
+              <small>Primary DB</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-postgresql-plain skill-icon"></i>
+              <span>PostgreSQL</span>
+              <small>RDBMS</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-python-plain skill-icon"></i>
+              <span>Pandas</span>
+              <small>Data Analysis</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-numpy-original skill-icon"></i>
+              <span>NumPy</span>
+              <small>Computation</small>
+            </div>
+            <div class="skill-card">
+              <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+              <span>ETL Pipelines</span>
+              <small>Data Workflows</small>
+            </div>
+            <div class="skill-card">
+              <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"/></svg>
+              <span>n8n Automation</span>
+              <small>Orchestration</small>
+            </div>
+            <div class="skill-card">
+              <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 10H6v-2h8v2zm4-4H6v-2h12v2z"/></svg>
+              <span>Data Modeling</span>
+              <small>Schema Design</small>
+            </div>
+            <div class="skill-card">
+              <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+              <span>JSON / XML</span>
+              <small>Parsing & Transform</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-panel" id="panel-frontend">
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="devicon-react-original skill-icon"></i>
+              <span>React.js</span>
+              <small>UI Library</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-html5-plain skill-icon"></i>
+              <span>HTML5</span>
+              <small>Markup</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-css3-plain skill-icon"></i>
+              <span>CSS3</span>
+              <small>Styling</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-bootstrap-plain skill-icon"></i>
+              <span>Bootstrap</span>
+              <small>CSS Framework</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-javascript-plain skill-icon"></i>
+              <span>TypeScript</span>
+              <small>Type Safety</small>
+            </div>
+            <div class="skill-card">
+              <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <span>Responsive</span>
+              <small>Mobile First</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & DevOps -->
+        <div class="skill-panel" id="panel-tools">
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="devicon-git-plain skill-icon"></i>
+              <span>Git</span>
+              <small>Version Control</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-github-original skill-icon"></i>
+              <span>GitHub</span>
+              <small>Collaboration</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-docker-plain skill-icon"></i>
+              <span>Docker</span>
+              <small>Containers</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-postman-plain skill-icon"></i>
+              <span>Postman</span>
+              <small>API Testing</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-intellij-plain skill-icon"></i>
+              <span>IntelliJ IDEA</span>
+              <small>Java IDE</small>
+            </div>
+            <div class="skill-card">
+              <i class="devicon-vscode-plain skill-icon"></i>
+              <span>VS Code</span>
+              <small>Editor</small>
+            </div>
+            <div class="skill-card">
+              <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17 16l-4-4V8.82C14.16 8.4 15 7.3 15 6c0-1.66-1.34-3-3-3S9 4.34 9 6c0 1.3.84 2.4 2 2.82V12l-4 4H3v5h5v-3.05l4-4.2 4 4.2V21h5v-5h-4z"/></svg>
+              <span>UiPath</span>
+              <small>RPA</small>
+            </div>
+            <div class="skill-card">
+              <svg class="skill-icon-svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14zM6 13h5v4H6v-4zm6-6h4v3h-4V7zM6 7h5v5H6V7zm6 4h4v6h-4v-6z"/></svg>
+              <span>Maven</span>
+              <small>Build Tool</small>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <div class="section-divider"></div>
+
+    <!-- ========== PROJECTS SECTION ========== -->
+    <section id="projects" class="section reveal">
       <div class="section-heading">
-        <p>Projects</p>
+        <p class="section-label">Projects</p>
         <h2>Featured Work</h2>
+        <div class="filter-container">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+          <button class="filter-btn" data-filter="automation">AI & Automation</button>
+        </div>
       </div>
-      <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-tag">Full Stack</div>
+
+      <!-- Featured Project (Full Width) -->
+      <article class="featured-project glass-card tilt-card" data-category="fullstack">
+        <div class="featured-badge">★ Featured</div>
+        <div class="featured-content">
+          <div class="project-header-row">
+            <span class="project-tag">Full Stack</span>
+            <a href="https://github.com/HarshadNimse/real-estate-marketplace" target="_blank" class="github-link" aria-label="View on GitHub">
+              <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+              View Code
+            </a>
+          </div>
           <h3>EstateHub – Real Estate Marketplace</h3>
-          <p>
-            A real estate platform where Buyers can search properties, Sellers can manage
-            listings, and Admins can monitor platform activity.
-          </p>
-          <ul>
-            <li>JWT authentication and role-based access</li>
-            <li>Property listing, search, filters, inquiries</li>
-            <li>Cloudinary image upload and MySQL database</li>
+          <p>A full-stack property platform with buyer, seller, and admin roles. Features JWT authentication, role-based access control, Cloudinary image uploads, and a normalized MySQL schema with composite index tuning.</p>
+          <ul class="project-highlights">
+            <li>Designed MySQL schema with 5+ tables, composite indexes on listing filters, FK constraints, and cascade rules.</li>
+            <li>Built 20+ REST API endpoints; structured data flows from request validation → JWT auth → parameterised MySQL query → JSON response.</li>
+            <li>Covering CRUD, filtering, and relational data retrieval.</li>
           </ul>
-          <div class="tech-stack">HTML • CSS • JS • Node • Express • MySQL</div>
+          <div class="tech-stack">
+            <span>React.js</span><span>Node.js</span><span>Express</span><span>MySQL</span><span>JWT</span><span>Cloudinary</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project Grid -->
+      <div class="projects-grid">
+        <article class="project-card glass-card tilt-card" data-category="automation">
+          <div class="project-header-row">
+            <span class="project-tag accent">AI & Automation</span>
+            <a href="https://github.com/HarshadNimse/AI-campus-automation" target="_blank" class="github-link" aria-label="View on GitHub">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            </a>
+          </div>
+          <h3>AI Campus Automation</h3>
+          <p>
+            Faculty-supervised orchestrator-worker ETL pipeline deployed for college use. Extracts Telegram webhook → transforms payload → SQL JOIN-based RBAC → loads to Google Sheets read/write with structured responses.
+          </p>
+          <ul class="project-details-list">
+            <li>Implemented dynamic calendar generation, multi-hall availability aggregation, and stateless session handling via encoded callback data.</li>
+            <li>Integrated Gmail API for automated notifications and Google Calendar API for conflict detection; Google Sheets OAuth2 as lightweight user registry.</li>
+          </ul>
+          <div class="tech-stack">
+            <span>n8n</span><span>MySQL</span><span>Telegram Bot API</span><span>Gmail API</span><span>Google Calendar</span><span>Sheets API</span>
+          </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-tag">Full Stack</div>
-          <h3>FreelanceHub</h3>
+        <article class="project-card glass-card tilt-card" data-category="fullstack">
+          <div class="project-header-row">
+            <span class="project-tag">Full Stack</span>
+            <a href="https://github.com/HarshadNimse/courier-tracking" target="_blank" class="github-link" aria-label="View on GitHub">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            </a>
+          </div>
+          <h3>Courier Tracking System</h3>
           <p>
-            A freelancing platform with separate client and freelancer workflows for
-            posting projects, viewing projects, and submitting proposals.
+            State-machine MySQL schema (created → in-transit → delivered) with composite indexing on tracking ID and recipient fields; event-driven architecture where status transitions trigger Socket.io push and Nodemailer email.
           </p>
-          <ul>
-            <li>Authentication with user roles</li>
-            <li>Project posting and proposal management</li>
-            <li>Client and freelancer dashboard logic</li>
+          <ul class="project-details-list">
+            <li>In-memory rate limiting, API abuse prevention, and unit tests for core query and validation logic.</li>
+            <li>Built express middleware for secure JWT routes and IP rate limiting.</li>
           </ul>
-          <div class="tech-stack">HTML • CSS • JS • Node • MySQL</div>
+          <div class="tech-stack">
+            <span>Node.js</span><span>Express</span><span>Socket.io</span><span>MySQL</span><span>Nodemailer</span>
+          </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-tag">Frontend</div>
-          <h3>Online Auction Frontend</h3>
+        <article class="project-card glass-card tilt-card" data-category="fullstack">
+          <div class="project-header-row">
+            <span class="project-tag">Full Stack</span>
+            <a href="https://github.com/HarshadNimse/freelancing-platform" target="_blank" class="github-link" aria-label="View on GitHub">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            </a>
+          </div>
+          <h3>Freelancing Platform</h3>
           <p>
-            A responsive auction-based interface focused on clean UI, product cards,
-            bidding layout, and user-friendly navigation.
+            A client-freelancer marketplace with dual-role access, job posting, bidding, and contract management modules; Vite + Bootstrap frontend with structured Node.js/MySQL backend.
           </p>
-          <ul>
-            <li>Responsive page layout</li>
-            <li>Interactive UI components</li>
-            <li>Clean frontend structure</li>
+          <ul class="project-details-list">
+            <li>Built Spring MVC backend and templated view layers utilizing Thymeleaf.</li>
+            <li>Enforced security access guidelines with customized Spring Security.</li>
           </ul>
-          <div class="tech-stack">HTML • CSS • JavaScript</div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-tag">Web App</div>
-          <h3>Quiz Application</h3>
-          <p>
-            A quiz-based application designed to practice questions, display scores,
-            and improve basic learning interactions.
-          </p>
-          <ul>
-            <li>Question-answer workflow</li>
-            <li>Score calculation</li>
-            <li>Simple and clear interface</li>
-          </ul>
-          <div class="tech-stack">HTML • CSS • JavaScript</div>
+          <div class="tech-stack">
+            <span>Java</span><span>Spring Boot</span><span>Spring Security</span><span>Thymeleaf</span><span>MySQL</span>
+          </div>
         </article>
       </div>
     </section>
 
-    <section id="experience" class="section">
+    <div class="section-divider"></div>
+
+    <!-- ========== EXPERIENCE SECTION ========== -->
+    <section id="experience" class="section reveal">
       <div class="section-heading">
-        <p>Internship</p>
-        <h2>Professional Experience</h2>
+        <p class="section-label">Experience</p>
+        <h2>Professional Journey</h2>
       </div>
-      <div class="timeline-card">
-        <div class="timeline-dot"></div>
-        <h3>Web Development Intern</h3>
-        <p class="muted">CGIS Software Pvt. Ltd.</p>
-        <p>
-          During my internship, I gained practical experience in full-stack web development
-          by working on real-world project modules, debugging issues, and improving
-          application functionality.
-        </p>
-        <p>
-          I learned how to apply technologies like HTML, CSS, JavaScript, Node.js,
-          Express.js, and MySQL while understanding professional coding practices,
-          teamwork, and project documentation.
-        </p>
+
+      <div class="timeline">
+        <div class="timeline-line" id="timelineLine"></div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-card-header">
+              <div>
+                <h3>Web Development Intern</h3>
+                <p class="company-name">CGPI Software Private Limited, Pune</p>
+              </div>
+              <span class="timeline-date">Jan 2026 – Apr 2026 <small>(3 months)</small></span>
+            </div>
+            <div class="timeline-body">
+              <p>Collaborated in an agile team environment during a 3-month contract, developing and maintaining full-stack application modules.</p>
+              <ul class="experience-bullets">
+                <li>Contributed to full-stack client projects involving backend API development, frontend implementation, and MySQL database integration.</li>
+                <li>Debugged and resolved issues across the codebase; collaborated with the development team on feature delivery and code reviews.</li>
+                <li>Worked with structured data through MySQL queries and REST APIs; applied data validation and transformation logic within backend application workflows.</li>
+                <li>Applied REST API design principles and worked across the stack — backend logic, database queries, and frontend integration for client-facing web applications.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="education" class="section">
+    <div class="section-divider"></div>
+
+    <!-- ========== EDUCATION SECTION ========== -->
+    <section id="education" class="section reveal">
       <div class="section-heading">
-        <p>Education</p>
+        <p class="section-label">Education</p>
         <h2>Academic Background</h2>
       </div>
-      <div class="education-card">
-        <h3>Master of Computer Applications (MCA)</h3>
-        <p>Dr. D. Y. Patil Institute of Management & Research, Pimpri, Pune</p>
-        <p class="muted">Academic Year: 2025–26 • Division: A • Roll No: MC24029</p>
+      <div class="education-grid">
+        <div class="education-card glass-card">
+          <div class="education-card-header">
+            <div class="edu-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+            </div>
+            <div>
+              <h3>Master of Computer Applications (MCA)</h3>
+              <span class="badge">2024 – 2026</span>
+            </div>
+          </div>
+          <p class="institution">Dr. D. Y. Patil Institute of Management and Research, Pune</p>
+          <p class="score"><strong>CGPA:</strong> 7.44</p>
+        </div>
+
+        <div class="education-card glass-card">
+          <div class="education-card-header">
+            <div class="edu-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+            </div>
+            <div>
+              <h3>B.Sc. Computer Science</h3>
+              <span class="badge">2021 – 2024</span>
+            </div>
+          </div>
+          <p class="institution">Abasaheb Garware College, Pune (Savitribai Phule Pune University)</p>
+          <p class="score"><strong>Result:</strong> 75.2%</p>
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="section contact-section">
+    <div class="section-divider"></div>
+
+    <!-- ========== CERTIFICATIONS SECTION ========== -->
+    <section id="certifications" class="section reveal">
       <div class="section-heading">
-        <p>Contact</p>
+        <p class="section-label">Certifications</p>
+        <h2>Verified Achievements</h2>
+      </div>
+      <div class="certifications-grid">
+        <div class="cert-card glass-card" style="--cert-accent: #f59e0b;">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M21 10.12h-6.78l-2.1-6.47c-.17-.52-.92-.52-1.09 0l-2.09 6.47H2.28c-.55 0-.78.7-.34 1.03l5.48 3.98-2.09 6.47c-.17.52.42.96.86.63L12 17.77l5.81 4.47c.44.33 1.03-.11.86-.63l-2.09-6.47 5.48-3.98c.44-.33.21-1.03-.34-1.03z"/></svg>
+          </div>
+          <h4>NPTEL Elite — AI for Management</h4>
+          <p class="cert-provider">IIT Madras</p>
+          <p class="cert-meta">Score: 72% • Elite Silver • Jan–Apr 2026</p>
+        </div>
+
+        <div class="cert-card glass-card" style="--cert-accent: #22c55e;">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+          </div>
+          <h4>Python Developer Certification</h4>
+          <p class="cert-provider">freeCodeCamp</p>
+          <p class="cert-meta">~300 hours • Core Curriculum • Jun 2026</p>
+        </div>
+
+        <div class="cert-card glass-card" style="--cert-accent: #06b6d4;">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+          </div>
+          <h4>Data Analytics Job Simulation</h4>
+          <p class="cert-provider">Deloitte / Forage</p>
+          <p class="cert-meta">Verified Simulation • Jun 2025</p>
+        </div>
+
+        <div class="cert-card glass-card" style="--cert-accent: #8b5cf6;">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+          </div>
+          <h4>JavaScript Fundamentals</h4>
+          <p class="cert-provider">Infosys Springboard</p>
+          <p class="cert-meta">Verified Developer Course • Apr 2025</p>
+        </div>
+
+        <div class="cert-card glass-card" style="--cert-accent: #ef4444;">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zM7 19c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM20 3H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zM7 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+          </div>
+          <h4>Database by Stanford Dbclass</h4>
+          <p class="cert-provider">Cursa</p>
+          <p class="cert-meta">Relational Databases & SQL • Dec 2024</p>
+        </div>
+
+        <div class="cert-card glass-card" style="--cert-accent: #3b82f6;">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M17 16l-4-4V8.82C14.16 8.4 15 7.3 15 6c0-1.66-1.34-3-3-3S9 4.34 9 6c0 1.3.84 2.4 2 2.82V12l-4 4H3v5h5v-3.05l4-4.2 4 4.2V21h5v-5h-4z"/></svg>
+          </div>
+          <h4>UiPath RPA Developer</h4>
+          <p class="cert-provider">Udemy</p>
+          <p class="cert-meta">30.5 hours • Build 7 Robots • Nov 2023</p>
+        </div>
+
+        <div class="cert-card glass-card" style="--cert-accent: #10b981;">
+          <div class="cert-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+          </div>
+          <h4>Python Bootcamp & Software Engineering</h4>
+          <p class="cert-provider">Infosys Springboard</p>
+          <p class="cert-meta">Nov 2024</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact" class="section contact-section reveal">
+      <div class="section-heading">
+        <p class="section-label">Contact</p>
         <h2>Let's Connect</h2>
       </div>
-      <div class="contact-grid">
-        <a class="contact-card" href="mailto:harshadstudy13@gmail.com">
-          <strong>Email</strong>
-          <span>harshadstudy13@gmail.com</span>
-        </a>
-        <a class="contact-card" href="https://github.com/harshadstudy13-droid" target="_blank">
-          <strong>GitHub</strong>
-          <span>github.com/harshadstudy13-droid</span>
-        </a>
-        <a class="contact-card" href="#" target="_blank">
-          <strong>LinkedIn</strong>
-          <span>Add your LinkedIn URL here</span>
-        </a>
+
+      <div class="contact-layout">
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper glass-card">
+          <h3>Send a Message</h3>
+          <p class="form-subtitle">Have a question or want to work together? Drop me a message.</p>
+          <form id="contactForm" class="contact-form">
+            <div class="form-group">
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" rows="5" placeholder="Your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn primary form-submit">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <div class="contact-sidebar">
+          <a class="contact-card glass-card" href="mailto:nimseharshad@gmail.com">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <strong>Email</strong>
+            <span>nimseharshad@gmail.com</span>
+          </a>
+
+          <a class="contact-card glass-card" href="https://github.com/HarshadNimse" target="_blank">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            </div>
+            <strong>GitHub</strong>
+            <span>github.com/HarshadNimse</span>
+          </a>
+
+          <a class="contact-card glass-card" href="https://www.linkedin.com/in/harshad-nimse-941853231" target="_blank">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </div>
+            <strong>LinkedIn</strong>
+            <span>Connect on LinkedIn</span>
+          </a>
+
+          <!-- Resume Downloads -->
+          <div class="resume-downloads glass-card">
+            <strong>Download Resume</strong>
+            <div class="resume-links">
+              <a href="Harshad_Resume_J.pdf" download class="resume-dl-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Full Stack
+              </a>
+              <a href="Harshad_Resume_DataScience.pdf" download class="resume-dl-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Data Engineering
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- ========== FOOTER ========== -->
   <footer>
-    <p>© 2026 Harshad Rajanikant Nimse. Built with HTML, CSS and JavaScript.</p>
+    <div class="footer-content">
+      <p>© 2026 Harshad Nimse. Designed & built with clean HTML, CSS and JavaScript.</p>
+      <div class="footer-links">
+        <a href="https://github.com/HarshadNimse" target="_blank" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/harshad-nimse-941853231" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="mailto:nimseharshad@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      </div>
+    </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
